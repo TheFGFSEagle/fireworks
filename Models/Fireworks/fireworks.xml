@@ -1,0 +1,134 @@
+<?xml version="1.0"?>
+<PropertyList>
+	<nasal>
+		<load><![CDATA[
+			var riseTime = 3;
+			var riseHeight = 500;
+			var explodeTime = 0.3;
+			var intervalTime = 10;
+			
+			var update = func() {
+				foreach (var c; props.getNode("/scenery/fireworks", 1).getChildren()) {
+					srand();
+					var deactivateTimer = maketimer(explodeTime, func() {
+						print("deactivate");
+						c.getNode("active", 1).setIntValue(0);
+						c.getNode("height", 1).setDoubleValue(0);
+					});
+					deactivateTimer.singleShot = 1;
+					deactivateTimer.simulatedTime = 1;
+					
+					var heightTimer = maketimer(riseTime + 0.4, func() {
+						print("height");
+						c.getNode("trail-active", 1).setIntValue(0);
+						c.getNode("active", 1).setIntValue(1);
+						deactivateTimer.start();
+					});
+					heightTimer.singleShot = 1;
+					heightTimer.simulatedTime = 1;
+			
+					c.getNode("trail-active", 1).setIntValue(1);
+					
+					var height = riseHeight - (riseHeight / 5) + (rand() * (riseHeight / 5));
+					interpolate(c.getNode("height", 1), height, riseTime);
+					heightTimer.start();
+				}
+			}
+			
+			var t = maketimer(intervalTime, update);
+			t.singleShot = 0;
+			t.simulatedTime = 1;
+			t.start();
+		]]></load>
+		<unload><![CDATA[
+			t.stop();
+			#deactivateTimer.stop();
+			#heightTimer.stop();
+		]]></unload>
+	</nasal>
+	
+	<model>
+		<path>circular-gold.xml</path>
+		<overlay>
+			<params>
+				<root>/scenery/fireworks/firework[0]</root>
+				<height>/scenery/fireworks/firework[0]/height</height>
+				<active>/scenery/fireworks/firework[0]/active</active>
+				<trail-active>/scenery/fireworks/firework[0]/trail-active</trail-active>
+				<trail-enabled type="bool">true</trail-enabled>
+			</params>
+		</overlay>
+		<offsets>
+			<x-m>0</x-m>
+			<y-m>0</y-m>
+		</offsets>
+	</model>
+	
+	<model>
+		<path>circular-red.xml</path>
+		<overlay>
+			<params>
+				<root>/scenery/fireworks/firework[1]</root>
+				<height>/scenery/fireworks/firework[1]/height</height>
+				<active>/scenery/fireworks/firework[1]/active</active>
+				<trail-active>/scenery/fireworks/firework[1]/trail-active</trail-active>
+				<trail-enabled type="bool">true</trail-enabled>
+			</params>
+		</overlay>
+		<offsets>
+			<x-m>100</x-m>
+			<y-m>50</y-m>
+		</offsets>
+	</model>
+	
+	<model>
+		<path>circular-red-gold.xml</path>
+		<overlay>
+			<params>
+				<root>/scenery/fireworks/firework[2]</root>
+				<height>/scenery/fireworks/firework[2]/height</height>
+				<active>/scenery/fireworks/firework[2]/active</active>
+				<trail-active>/scenery/fireworks/firework[2]/trail-active</trail-active>
+				<trail-enabled type="bool">true</trail-enabled>
+			</params>
+		</overlay>
+		<offsets>
+			<x-m>200</x-m>
+			<y-m>0</y-m>
+		</offsets>
+	</model>
+	
+	<model>
+		<path>circular-red.xml</path>
+		<overlay>
+			<params>
+				<root>/scenery/fireworks/firework[3]</root>
+				<height>/scenery/fireworks/firework[3]/height</height>
+				<active>/scenery/fireworks/firework[3]/active</active>
+				<trail-active>/scenery/fireworks/firework[3]/trail-active</trail-active>
+				<trail-enabled type="bool">true</trail-enabled>
+			</params>
+		</overlay>
+		<offsets>
+			<x-m>300</x-m>
+			<y-m>50</y-m>
+		</offsets>
+	</model>
+	<model>
+		<path>circular-gold.xml</path>
+		<overlay>
+			<params>
+				<root>/scenery/fireworks/firework[4]</root>
+				<height>/scenery/fireworks/firework[4]/height</height>
+				<active>/scenery/fireworks/firework[4]/active</active>
+				<trail-active>/scenery/fireworks/firework[4]/trail-active</trail-active>
+				<trail-enabled type="bool">true</trail-enabled>
+			</params>
+		</overlay>
+		<offsets>
+			<x-m>400</x-m>
+			<y-m>0</y-m>
+		</offsets>
+	</model>
+</PropertyList>
+				

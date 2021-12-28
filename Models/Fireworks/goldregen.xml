@@ -1,0 +1,168 @@
+<?xml version="1.0"?>
+<PropertyList>
+	<params>
+		<root>/scenery/fireworks/firework[6]</root>
+		<height>/scenery/fireworks/firework[6]/height</height>
+		<active>/scenery/fireworks/firework[6]/active</active>
+		<trail-enabled type="bool">true</trail-enabled>
+		<trail-active>/scenery/fireworks/firework[6]/trail-active</trail-active>
+	</params>
+	<nasal>
+		<load><![CDATA[
+			fireworkNode = props.globals.getNode("/scenery/fireworks/firework[6]");
+			heightNode = fireworkNode.getNode("height", 1);
+			activeNode = fireworkNode.getNode("active", 1);
+			trailActiveNode = fireworkNode.getNode("trail-active", 1);
+			riseTime = 3;
+			riseHeight = 500;
+			explodeTime = 0.3;
+			intervalTime = 5;
+			
+			deactivateTimer = maketimer(explodeTime, func() {
+				activeNode.setIntValue(0);
+				heightNode.setDoubleValue(0);
+			});
+			deactivateTimer.singleShot = 1;
+			deactivateTimer.simulatedTime = 1;
+			
+			heightTimer = maketimer(riseTime + 0.5, func() {
+				trailActiveNode.setIntValue(0);
+				activeNode.setIntValue(1);
+				deactivateTimer.start();
+			});
+				
+			heightTimer.singleShot = 1;
+			heightTimer.simulatedTime = 1;
+			
+			var update = func() {
+				srand();
+				height = riseHeight - (riseHeight / 5) + (rand() * (riseHeight / 5));
+				trailActiveNode.setIntValue(1);
+				interpolate(heightNode, height, riseTime);
+				heightTimer.start();
+			}
+			
+			var updateTimer = maketimer(intervalTime, update);
+			updateTimer.singleShot = 0;
+			updateTimer.simulatedTime = 1;
+			
+			srand();
+			var startTimer = maketimer(rand() * 10, func() {
+				updateTimer.start();
+			});
+			startTimer.singleShot = 1;
+			startTimer.simulatedTime = 1;
+			startTimer.start();
+		]]></load>
+		<unload><![CDATA[
+			updateTimer.stop();
+		]]></unload>
+	</nasal>
+	
+	<animation>
+		<type>translate</type>
+		<axis>
+			<x>0</x>
+			<y>0</y>
+			<z>1</z>
+		</axis>
+		<property alias="../../params/height"/>
+	</animation>
+	
+	<particlesystem>
+		<condition>
+			<property alias="../../../params/active"/>
+		</condition>
+		<type>normal</type>
+		<name>firework</name>
+		<texture>gold.png</texture>
+		<emissive>true</emissive>
+		<lighting>false</lighting>
+		<attach>world</attach>
+		
+		<placer>
+			<type>point</type>
+		</placer>
+		
+		<shooter>
+			<theta-min-deg>-180</theta-min-deg>
+			<theta-max-deg>180</theta-max-deg>
+			<phi-min-deg>-180</phi-min-deg>
+			<phi-max-deg>180</phi-max-deg>
+			<speed-mps>
+				<value>3000</value>
+				<spread>100</spread>
+			</speed-mps>
+			<rotation-speed>
+				<x-min-deg-sec>0</x-min-deg-sec>
+				<y-min-deg-sec>0</y-min-deg-sec>
+				<z-min-deg-sec>0</z-min-deg-sec>
+				<x-max-deg-sec>0</x-max-deg-sec>
+				<y-max-deg-sec>0</y-max-deg-sec>
+				<z-max-deg-sec>0</z-max-deg-sec>
+			</rotation-speed>
+		</shooter>
+			
+		<counter>
+			<particles-per-sec>
+				<value>5000</value>
+			</particles-per-sec>
+		</counter>
+		<align>billboard</align>
+			 
+		<particle>
+			<start>
+				<color>
+					<red>
+						<value>1</value>
+					</red>
+					<green>
+						<value>0.88</value>
+					</green>
+					<blue>
+						<value>0.65</value>
+					</blue>
+					<alpha>
+						<value>1</value>
+					</alpha>
+				</color>
+				<size>
+					<value>0.5</value>
+				</size>
+			</start>
+		
+			<end>
+				<color>
+					<red>
+						<value>0.1</value>
+					</red>
+					<green>
+						<value>0.088</value>
+					</green>
+					<blue>
+						<value>0.065</value>
+					</blue>
+					<alpha>
+						<value>0.1</value>
+					</alpha>
+				</color>
+				<size>
+					<value>2</value>
+				</size>
+			</end>
+		
+			<life-sec>
+				<value>3</value>
+			</life-sec>
+		
+			<mass-kg>0.25</mass-kg>
+			<radius-m>0.1</radius-m>
+		</particle>
+		
+		<program>
+			<fluid>air</fluid>
+			<gravity type="bool">true</gravity>
+			<wind type="bool">true</wind>
+		</program>
+	</particlesystem>
+</PropertyList>
