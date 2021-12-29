@@ -1,0 +1,459 @@
+<?xml version="1.0"?>
+<PropertyList>
+	<params>
+		<root>/scenery/fireworks/firework[10]</root>
+		<height>/scenery/fireworks/firework[10]/height</height>
+		<active>/scenery/fireworks/firework[10]/active</active>
+	</params>
+	<nasal>
+		<load><![CDATA[
+			fireworkNode = props.globals.getNode("/scenery/fireworks/firework[10]");
+			heightNode = fireworkNode.getNode("height", 1);
+			activeNode = fireworkNode.getNode("active", 1);
+			riseHeight = 500;
+			explodeTime = 0.3;
+			intervalTime = 5;
+			
+			deactivateTimer = maketimer(explodeTime, func() {
+				activeNode.setIntValue(0);
+			});
+			deactivateTimer.singleShot = 1;
+			deactivateTimer.simulatedTime = 1;
+			
+			var update = func() {
+				srand();
+				height = riseHeight - (riseHeight / 5) + (rand() * (riseHeight / 5));
+				heightNode.setDoubleValue(height);
+				activeNode.setIntValue(1);
+				deactivateTimer.start();
+			}
+			
+			var updateTimer = maketimer(intervalTime, update);
+			updateTimer.singleShot = 0;
+			updateTimer.simulatedTime = 1;
+			
+			var startTimer = maketimer(rand() * 10, func() {
+				updateTimer.start();
+			});
+			startTimer.singleShot = 1;
+			startTimer.simulatedTime = 1;
+			startTimer.start();
+		]]></load>
+		<unload><![CDATA[
+			updateTimer.stop();
+		]]></unload>
+	</nasal>
+	
+	<animation>
+		<type>billboard</type>
+		<spherical type="bool">false</spherical>
+	</animation>
+	
+	<animation>
+		<type>translate</type>
+		<axis>
+			<x>0</x>
+			<y>0</y>
+			<z>1</z>
+		</axis>
+		<property alias="../../params/height"/>
+	</animation>
+	
+	<model>
+		<path>red-radial.xml</path>
+		<offsets>
+			<roll-deg>0</roll-deg>
+		</offsets>
+		<overlay>
+			<params>
+				<active alias="../../../../params/active"/>
+			</params>
+		</overlay>
+	</model>		
+	<model>
+		<path>red-radial.xml</path>
+		<offsets>
+			<roll-deg>20</roll-deg>
+		</offsets>
+		<overlay>
+			<params>
+				<active alias="../../../../params/active"/>
+			</params>
+		</overlay>
+	</model>		
+ 	<model>
+		<path>red-radial.xml</path>
+		<offsets>
+			<roll-deg>40</roll-deg>
+		</offsets>
+		<overlay>
+			<params>
+				<active alias="../../../../params/active"/>
+			</params>
+		</overlay>
+	</model>		
+	<model>
+		<path>red-radial.xml</path>
+		<offsets>
+			<roll-deg>60</roll-deg>
+		</offsets>
+		<overlay>
+			<params>
+				<active alias="../../../../params/active"/>
+			</params>
+		</overlay>
+	</model>		
+	<model>
+		<path>red-radial.xml</path>
+		<offsets>
+			<roll-deg>80</roll-deg>
+		</offsets>
+		<overlay>
+			<params>
+				<active alias="../../../../params/active"/>
+			</params>
+		</overlay>
+	</model>		
+	<model>
+		<path>red-radial.xml</path>
+		<offsets>
+			<roll-deg>100</roll-deg>
+		</offsets>
+		<overlay>
+			<params>
+				<active alias="../../../../params/active"/>
+			</params>
+		</overlay>
+	</model>		
+	<model>
+		<path>red-radial.xml</path>
+		<offsets>
+			<roll-deg>120</roll-deg>
+		</offsets>
+		<overlay>
+			<params>
+				<active alias="../../../../params/active"/>
+			</params>
+		</overlay>
+	</model>		
+	<model>
+		<path>red-radial.xml</path>
+		<offsets>
+			<roll-deg>140</roll-deg>
+		</offsets>
+		<overlay>
+			<params>
+				<active alias="../../../../params/active"/>
+			</params>
+		</overlay>
+	</model>		
+	<model>
+		<path>red-radial.xml</path>
+		<offsets>
+			<roll-deg>160</roll-deg>
+		</offsets>
+		<overlay>
+			<params>
+				<active alias="../../../../params/active"/>
+			</params>
+		</overlay>
+	</model>		
+	<model>
+		<path>red-radial.xml</path>
+		<offsets>
+			<roll-deg>180</roll-deg>
+		</offsets>
+		<overlay>
+			<params>
+				<active alias="../../../../params/active"/>
+			</params>
+		</overlay>
+	</model>		
+	<model>
+		<path>red-radial.xml</path>
+		<offsets>
+			<roll-deg>200</roll-deg>
+		</offsets>
+		<overlay>
+			<params>
+				<active alias="../../../../params/active"/>
+			</params>
+		</overlay>
+	</model>		
+	<model>
+		<path>red-radial.xml</path>
+		<offsets>
+			<roll-deg>220</roll-deg>
+		</offsets>
+		<overlay>
+			<params>
+				<active alias="../../../../params/active"/>
+			</params>
+		</overlay>
+	</model>		
+	<model>
+		<path>red-radial.xml</path>
+		<offsets>
+			<roll-deg>240</roll-deg>
+		</offsets>
+		<overlay>
+			<params>
+				<active alias="../../../../params/active"/>
+			</params>
+		</overlay>
+	</model>		
+	<model>
+		<path>red-radial.xml</path>
+		<offsets>
+			<roll-deg>260</roll-deg>
+		</offsets>
+		<overlay>
+			<params>
+				<active alias="../../../../params/active"/>
+			</params>
+		</overlay>
+	</model>		
+	<model>
+		<path>red-radial.xml</path>
+		<offsets>
+			<roll-deg>280</roll-deg>
+		</offsets>
+		<overlay>
+			<params>
+				<active alias="../../../../params/active"/>
+			</params>
+		</overlay>
+	</model>		
+	<model>
+		<path>red-radial.xml</path>
+		<offsets>
+			<roll-deg>300</roll-deg>
+		</offsets>
+		<overlay>
+			<params>
+				<active alias="../../../../params/active"/>
+			</params>
+		</overlay>
+	</model>		
+	<model>
+		<path>red-radial.xml</path>
+		<offsets>
+			<roll-deg>320</roll-deg>
+		</offsets>
+		<overlay>
+			<params>
+				<active alias="../../../../params/active"/>
+			</params>
+		</overlay>
+	</model>		
+	<model>
+		<path>red-radial.xml</path>
+		<offsets>
+			<roll-deg>340</roll-deg>
+		</offsets>
+		<overlay>
+			<params>
+				<active alias="../../../../params/active"/>
+			</params>
+		</overlay>
+	</model>		
+	
+	<model>
+		<path>gold-radial.xml</path>
+		<offsets>
+			<roll-deg>10</roll-deg>
+		</offsets>
+		<overlay>
+			<params>
+				<active alias="../../../../params/active"/>
+			</params>
+		</overlay>
+	</model>		
+	<model>
+		<path>gold-radial.xml</path>
+		<offsets>
+			<roll-deg>30</roll-deg>
+		</offsets>
+		<overlay>
+			<params>
+				<active alias="../../../../params/active"/>
+			</params>
+		</overlay>
+	</model>		
+ 	<model>
+		<path>gold-radial.xml</path>
+		<offsets>
+			<roll-deg>50</roll-deg>
+		</offsets>
+		<overlay>
+			<params>
+				<active alias="../../../../params/active"/>
+			</params>
+		</overlay>
+	</model>		
+	<model>
+		<path>gold-radial.xml</path>
+		<offsets>
+			<roll-deg>70</roll-deg>
+		</offsets>
+		<overlay>
+			<params>
+				<active alias="../../../../params/active"/>
+			</params>
+		</overlay>
+	</model>		
+	<model>
+		<path>gold-radial.xml</path>
+		<offsets>
+			<roll-deg>90</roll-deg>
+		</offsets>
+		<overlay>
+			<params>
+				<active alias="../../../../params/active"/>
+			</params>
+		</overlay>
+	</model>		
+	<model>
+		<path>gold-radial.xml</path>
+		<offsets>
+			<roll-deg>110</roll-deg>
+		</offsets>
+		<overlay>
+			<params>
+				<active alias="../../../../params/active"/>
+			</params>
+		</overlay>
+	</model>		
+	<model>
+		<path>gold-radial.xml</path>
+		<offsets>
+			<roll-deg>130</roll-deg>
+		</offsets>
+		<overlay>
+			<params>
+				<active alias="../../../../params/active"/>
+			</params>
+		</overlay>
+	</model>		
+	<model>
+		<path>gold-radial.xml</path>
+		<offsets>
+			<roll-deg>150</roll-deg>
+		</offsets>
+		<overlay>
+			<params>
+				<active alias="../../../../params/active"/>
+			</params>
+		</overlay>
+	</model>		
+	<model>
+		<path>gold-radial.xml</path>
+		<offsets>
+			<roll-deg>170</roll-deg>
+		</offsets>
+		<overlay>
+			<params>
+				<active alias="../../../../params/active"/>
+			</params>
+		</overlay>
+	</model>		
+	<model>
+		<path>gold-radial.xml</path>
+		<offsets>
+			<roll-deg>190</roll-deg>
+		</offsets>
+		<overlay>
+			<params>
+				<active alias="../../../../params/active"/>
+			</params>
+		</overlay>
+	</model>		
+	<model>
+		<path>gold-radial.xml</path>
+		<offsets>
+			<roll-deg>210</roll-deg>
+		</offsets>
+		<overlay>
+			<params>
+				<active alias="../../../../params/active"/>
+			</params>
+		</overlay>
+	</model>		
+	<model>
+		<path>gold-radial.xml</path>
+		<offsets>
+			<roll-deg>230</roll-deg>
+		</offsets>
+		<overlay>
+			<params>
+				<active alias="../../../../params/active"/>
+			</params>
+		</overlay>
+	</model>		
+	<model>
+		<path>gold-radial.xml</path>
+		<offsets>
+			<roll-deg>250</roll-deg>
+		</offsets>
+		<overlay>
+			<params>
+				<active alias="../../../../params/active"/>
+			</params>
+		</overlay>
+	</model>		
+	<model>
+		<path>gold-radial.xml</path>
+		<offsets>
+			<roll-deg>270</roll-deg>
+		</offsets>
+		<overlay>
+			<params>
+				<active alias="../../../../params/active"/>
+			</params>
+		</overlay>
+	</model>		
+	<model>
+		<path>gold-radial.xml</path>
+		<offsets>
+			<roll-deg>290</roll-deg>
+		</offsets>
+		<overlay>
+			<params>
+				<active alias="../../../../params/active"/>
+			</params>
+		</overlay>
+	</model>		
+	<model>
+		<path>gold-radial.xml</path>
+		<offsets>
+			<roll-deg>310</roll-deg>
+		</offsets>
+		<overlay>
+			<params>
+				<active alias="../../../../params/active"/>
+			</params>
+		</overlay>
+	</model>		
+	<model>
+		<path>gold-radial.xml</path>
+		<offsets>
+			<roll-deg>330</roll-deg>
+		</offsets>
+		<overlay>
+			<params>
+				<active alias="../../../../params/active"/>
+			</params>
+		</overlay>
+	</model>		
+	<model>
+		<path>gold-radial.xml</path>
+		<offsets>
+			<roll-deg>350</roll-deg>
+		</offsets>
+		<overlay>
+			<params>
+				<active alias="../../../../params/active"/>
+			</params>
+		</overlay>
+	</model>		
+</PropertyList>

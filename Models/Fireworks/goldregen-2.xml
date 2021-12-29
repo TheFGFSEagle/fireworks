@@ -1,15 +1,15 @@
 <?xml version="1.0"?>
 <PropertyList>
 	<params>
-		<root>/scenery/fireworks/firework[6]</root>
-		<height>/scenery/fireworks/firework[6]/height</height>
-		<active>/scenery/fireworks/firework[6]/active</active>
+		<root>/scenery/fireworks/firework[13]</root>
+		<height>/scenery/fireworks/firework[13]/height</height>
+		<active>/scenery/fireworks/firework[13]/active</active>
 		<trail-enabled type="bool">true</trail-enabled>
-		<trail-active>/scenery/fireworks/firework[6]/trail-active</trail-active>
+		<trail-active>/scenery/fireworks/firework[13]/trail-active</trail-active>
 	</params>
 	<nasal>
 		<load><![CDATA[
-			fireworkNode = props.globals.getNode("/scenery/fireworks/firework[6]");
+			fireworkNode = props.globals.getNode("/scenery/fireworks/firework[13]");
 			heightNode = fireworkNode.getNode("height", 1);
 			activeNode = fireworkNode.getNode("active", 1);
 			trailActiveNode = fireworkNode.getNode("trail-active", 1);

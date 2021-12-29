@@ -1,0 +1,288 @@
+<?xml version="1.0"?>
+<PropertyList>
+	<params>
+		<root>/scenery/fireworks/firework[12]</root>
+		<height>/scenery/fireworks/firework[12]/height</height>
+		<active>/scenery/fireworks/firework[12]/active</active>
+		<trail-enabled type="bool">true</trail-enabled>
+		<trail-active>/scenery/fireworks/firework[12]/trail-active</trail-active>
+	</params>
+	<nasal>
+		<load><![CDATA[
+			fireworkNode = props.globals.getNode("/scenery/fireworks/firework[12]");
+			heightNode = fireworkNode.getNode("height", 1);
+			activeNode = fireworkNode.getNode("active", 1);
+			trailActiveNode = fireworkNode.getNode("trail-active", 1);
+			riseTime = 3;
+			riseHeight = 500;
+			explodeTime = 0.3;
+			intervalTime = 5;
+			
+			deactivateTimer = maketimer(explodeTime, func() {
+				activeNode.setIntValue(0);
+				heightNode.setDoubleValue(0);
+			});
+			deactivateTimer.singleShot = 1;
+			deactivateTimer.simulatedTime = 1;
+			
+			heightTimer = maketimer(riseTime + 0.4, func() {
+				trailActiveNode.setIntValue(0);
+				activeNode.setIntValue(1);
+				deactivateTimer.start();
+			});
+				
+			heightTimer.singleShot = 1;
+			heightTimer.simulatedTime = 1;
+			
+			var update = func() {
+				srand();
+				height = riseHeight - (riseHeight / 5) + (rand() * (riseHeight / 5));
+				trailActiveNode.setIntValue(1);
+				interpolate(heightNode, height, riseTime);
+				heightTimer.start();
+			}
+			
+			var updateTimer = maketimer(intervalTime, update);
+			updateTimer.singleShot = 0;
+			updateTimer.simulatedTime = 1;
+			
+			srand();
+			var startTimer = maketimer(rand() * 10, func() {
+				updateTimer.start();
+			});
+			startTimer.singleShot = 1;
+			startTimer.simulatedTime = 1;
+			startTimer.start();
+		]]></load>
+		<unload><![CDATA[
+			updateTimer.stop();
+		]]></unload>
+	</nasal>
+	
+	<animation>
+		<type>billboard</type>
+		<spherical type="bool">false</spherical>
+	</animation>
+	
+	<animation>
+		<type>translate</type>
+		<axis>
+			<x>0</x>
+			<y>0</y>
+			<z>1</z>
+		</axis>
+		<property alias="../../params/height"/>
+	</animation>
+	
+	<model>
+		<path>gold-trail.xml</path>
+		<offsets>
+			<roll-deg>180</roll-deg>
+		</offsets>
+		<overlay>
+			<params>
+				<trail-active alias="../../../../params/trail-active"/>
+				<trail-enabled alias="../../../../params/trail-enabled"/>
+			</params>
+		</overlay>
+	</model>
+	
+	<model>
+		<path>red-radial.xml</path>
+		<offsets>
+			<roll-deg>0</roll-deg>
+		</offsets>
+		<overlay>
+			<params>
+				<active alias="../../../../params/active"/>
+			</params>
+		</overlay>
+	</model>		
+	<model>
+		<path>red-radial.xml</path>
+		<offsets>
+			<roll-deg>20</roll-deg>
+		</offsets>
+		<overlay>
+			<params>
+				<active alias="../../../../params/active"/>
+			</params>
+		</overlay>
+	</model>		
+ 	<model>
+		<path>red-radial.xml</path>
+		<offsets>
+			<roll-deg>40</roll-deg>
+		</offsets>
+		<overlay>
+			<params>
+				<active alias="../../../../params/active"/>
+			</params>
+		</overlay>
+	</model>		
+	<model>
+		<path>red-radial.xml</path>
+		<offsets>
+			<roll-deg>60</roll-deg>
+		</offsets>
+		<overlay>
+			<params>
+				<active alias="../../../../params/active"/>
+			</params>
+		</overlay>
+	</model>		
+	<model>
+		<path>red-radial.xml</path>
+		<offsets>
+			<roll-deg>80</roll-deg>
+		</offsets>
+		<overlay>
+			<params>
+				<active alias="../../../../params/active"/>
+			</params>
+		</overlay>
+	</model>		
+	<model>
+		<path>red-radial.xml</path>
+		<offsets>
+			<roll-deg>100</roll-deg>
+		</offsets>
+		<overlay>
+			<params>
+				<active alias="../../../../params/active"/>
+			</params>
+		</overlay>
+	</model>		
+	<model>
+		<path>red-radial.xml</path>
+		<offsets>
+			<roll-deg>120</roll-deg>
+		</offsets>
+		<overlay>
+			<params>
+				<active alias="../../../../params/active"/>
+			</params>
+		</overlay>
+	</model>		
+	<model>
+		<path>red-radial.xml</path>
+		<offsets>
+			<roll-deg>140</roll-deg>
+		</offsets>
+		<overlay>
+			<params>
+				<active alias="../../../../params/active"/>
+			</params>
+		</overlay>
+	</model>		
+	<model>
+		<path>red-radial.xml</path>
+		<offsets>
+			<roll-deg>160</roll-deg>
+		</offsets>
+		<overlay>
+			<params>
+				<active alias="../../../../params/active"/>
+			</params>
+		</overlay>
+	</model>		
+	<model>
+		<path>red-radial.xml</path>
+		<offsets>
+			<roll-deg>180</roll-deg>
+		</offsets>
+		<overlay>
+			<params>
+				<active alias="../../../../params/active"/>
+			</params>
+		</overlay>
+	</model>		
+	<model>
+		<path>red-radial.xml</path>
+		<offsets>
+			<roll-deg>200</roll-deg>
+		</offsets>
+		<overlay>
+			<params>
+				<active alias="../../../../params/active"/>
+			</params>
+		</overlay>
+	</model>		
+	<model>
+		<path>red-radial.xml</path>
+		<offsets>
+			<roll-deg>220</roll-deg>
+		</offsets>
+		<overlay>
+			<params>
+				<active alias="../../../../params/active"/>
+			</params>
+		</overlay>
+	</model>		
+	<model>
+		<path>red-radial.xml</path>
+		<offsets>
+			<roll-deg>240</roll-deg>
+		</offsets>
+		<overlay>
+			<params>
+				<active alias="../../../../params/active"/>
+			</params>
+		</overlay>
+	</model>		
+	<model>
+		<path>red-radial.xml</path>
+		<offsets>
+			<roll-deg>260</roll-deg>
+		</offsets>
+		<overlay>
+			<params>
+				<active alias="../../../../params/active"/>
+			</params>
+		</overlay>
+	</model>		
+	<model>
+		<path>red-radial.xml</path>
+		<offsets>
+			<roll-deg>280</roll-deg>
+		</offsets>
+		<overlay>
+			<params>
+				<active alias="../../../../params/active"/>
+			</params>
+		</overlay>
+	</model>		
+	<model>
+		<path>red-radial.xml</path>
+		<offsets>
+			<roll-deg>300</roll-deg>
+		</offsets>
+		<overlay>
+			<params>
+				<active alias="../../../../params/active"/>
+			</params>
+		</overlay>
+	</model>		
+	<model>
+		<path>red-radial.xml</path>
+		<offsets>
+			<roll-deg>320</roll-deg>
+		</offsets>
+		<overlay>
+			<params>
+				<active alias="../../../../params/active"/>
+			</params>
+		</overlay>
+	</model>		
+	<model>
+		<path>red-radial.xml</path>
+		<offsets>
+			<roll-deg>340</roll-deg>
+		</offsets>
+		<overlay>
+			<params>
+				<active alias="../../../../params/active"/>
+			</params>
+		</overlay>
+	</model>		
+</PropertyList>

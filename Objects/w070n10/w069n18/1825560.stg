@@ -1,0 +1,31 @@
+OBJECT_SHARED Models/Fireworks/fountain-gold.xml -68.91263293 18.44891676 63.6737 0.0
+OBJECT_SHARED Models/Fireworks/fountain-gold.xml -68.91255668 18.44962430 64.0864 0.0
+OBJECT_SHARED Models/Fireworks/fountain-gold.xml -68.91248212 18.45026906 64.4638 0.0
+OBJECT_SHARED Models/Fireworks/fountain-red.xml -68.91591230 18.45070953 65.2411 0.0
+OBJECT_SHARED Models/Fireworks/fountain-white.xml -68.91591230 18.45070953 65.2411 0.0
+OBJECT_SHARED Models/Fireworks/fountain-red.xml -68.91599745 18.45005551 64.9235 0.0
+OBJECT_SHARED Models/Fireworks/fountain-gold.xml -68.91599745 18.45005551 64.9235 0.0
+OBJECT_SHARED Models/Fireworks/fountain-red.xml -68.91603090 18.44922509 64.4951 0.0
+OBJECT_SHARED Models/Fireworks/fountain-white.xml -68.91603090 18.44922509 64.4951 0.0
+OBJECT_SHARED Models/Fireworks/fountain-white.xml -68.91329918 18.44884210 63.7629 0.0
+OBJECT_SHARED Models/Fireworks/fountain-white.xml -68.91431383 18.44893601 64.0284 0.0
+OBJECT_SHARED Models/Fireworks/fountain-white.xml -68.91530974 18.44905986 64.2883 0.0
+OBJECT_SHARED Models/Fireworks/fountain-white.xml -68.91302255 18.45035515 64.6151 0.0
+OBJECT_SHARED Models/Fireworks/fountain-white.xml -68.91413110 18.45051425 64.9104 0.0
+OBJECT_SHARED Models/Fireworks/fountain-white.xml -68.91523838 18.45061360 65.1062 0.0
+
+OBJECT_SHARED Models/Fireworks/circular-red.xml -68.90066014 18.45169167 60.5912 0.0
+#OBJECT_SHARED Models/Fireworks/circular-red-trail.xml -68.89512753 18.44875520 57.5546 0.0
+#OBJECT_SHARED Models/Fireworks/circular-red-gold.xml -68.89607702 18.44994411 57.6255 0.0
+#OBJECT_SHARED Models/Fireworks/circular-red-gold-trail.xml -68.89639668 18.44719549 58.9510 0.0
+#OBJECT_SHARED Models/Fireworks/circular-gold.xml -68.89746397 18.44581810 59.0052 0.0
+#OBJECT_SHARED Models/Fireworks/circular-gold-trail.xml -68.90135825 18.44791198 59.9119 0.0
+#OBJECT_SHARED Models/Fireworks/circular-red-2.xml -68.90022858 18.44850518 59.7638 0.0
+#OBJECT_SHARED Models/Fireworks/circular-red-trail-2.xml -68.89563293 18.44956335 57.4779 0.0
+#OBJECT_SHARED Models/Fireworks/circular-red-gold-2.xml -68.90322694 18.45105256 61.8153 0.0
+#OBJECT_SHARED Models/Fireworks/circular-red-gold-trail-2.xml -68.89504173 18.44789532 57.8803 0.0
+#OBJECT_SHARED Models/Fireworks/circular-gold-2.xml -68.89938355 18.44801378 59.4055 0.0
+#OBJECT_SHARED Models/Fireworks/circular-gold-trail-2.xml -68.90052733 18.44882819 59.9780 0.0
+#OBJECT_SHARED Models/Fireworks/goldregen.xml -68.90422078 18.45074017 62.1596 0.0
+#OBJECT_SHARED Models/Fireworks/goldregen-2.xml -68.90346898 18.44893686 61.0585 0.0
+
