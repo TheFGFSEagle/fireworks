@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<PropertyList>
+	<meta>
+		<file-type type="string">FlightGear add-on menu bar items</file-type>
+		<format-version type="int">1</format-version>
+	</meta>
+
+	<menubar-items>
+		<menu>
+			<label>Fireworks</label>
+			<enabled type="bool">true</enabled>
+			
+			<item>
+				<label>Reload fireworks</label>
+				<binding>
+					<command>addon-reload</command>
+					<id>org.flightgear.addons.fireworks</id>
+				</binding>
+			</item> 
+		</menu>
+	</menubar-items>
+</PropertyList>

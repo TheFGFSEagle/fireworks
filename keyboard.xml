@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<PropertyList>
+	<keyboard>
+<!--		<key n="100">
+			<name>Alt-d</name>
+			<desc>Clear points</desc>
+			<mod-alt>
+				<binding>
+					<command>nasal</command>
+					<script>fgGeodesy.points = [];</script>
+				</binding>
+			</mod-alt>
+		</key>-->
+	</keyboard>
+</PropertyList>

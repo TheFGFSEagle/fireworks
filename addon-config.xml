@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<PropertyList>
+	<addons>
+		<by-id>
+			<org.flightgear.addons.fireworks>
+				<addon-devel>
+				</addon-devel>
+			</org.flightgear.addons.fireworks>
+		</by-id>
+	</addons>
+	<input include="keyboard.xml"/>
+</PropertyList>
