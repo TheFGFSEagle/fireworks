@@ -1,2 +1,2 @@
-# FGFireworks
-Fireworks scenery for FlightGear
+# Fireworks
+Fireworks addon for FlightGear
